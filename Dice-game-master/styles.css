@@ -1,0 +1,34 @@
+.container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.bet-options button,
+#startButton {
+  background-color: #4ECCA3;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.bet-options button:hover,
+#startButton:hover {
+  background-color: #3D9970;
+}
+
+.start-button-wrapper {
+  margin-top: 20px;
+}
+
+/* Adjust the size of dice images and make them round */
+.dice img {
+  width: 80px; /* You can adjust the width and height as needed */
+  height: 80px;
+  border-radius: 50%; /* Make the images round */
+  margin: 10px; /* Add margin for a spaced-out look */
+}
+
+/* ... (rest of your existing styles) */

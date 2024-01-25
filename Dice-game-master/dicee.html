@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>May Mắn Ngày Tết</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Add Font Awesome CSS -->
+
+    <style>
+      /* Add styles for the animation */
+      @keyframes slide {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes rainbowBlink {
+        0%, 100% {
+          color: red;
+          transform: scale(1.2); /* Enlarge the text */
+        }
+        16.666% {
+          color: orange;
+        }
+        33.333% {
+          color: yellow;
+        }
+        50% {
+          color: green;
+        }
+        66.666% {
+          color: blue;
+        }
+        83.333% {
+          color: indigo;
+        }
+      }
+
+      .animation-container {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .marquee {
+        display: inline-block;
+        animation: slide 10s linear infinite;
+      }
+
+      /* Add styles for the rainbow blink effect */
+      .rainbow {
+        font-size: 1.5em; /* Adjust the font size as needed */
+        display: inline-block;
+        animation: rainbowBlink 7s linear infinite;
+        transition: transform 0.3s ease-in-out; /* Add transition for smoother transform changes */
+      }
+
+      /* Add hover effect for the rainbow text */
+      .rainbow:hover {
+        transform: scale(1.5);
+      }
+
+      /* Styles for the surprise button */
+      .surprise-button {
+        background-color: #FFD700; /* Golden color, you can change it */
+        color: #000; /* Black text */
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease-in-out; /* Add transition for smoother color change */
+      }
+
+      /* Hover effect for the surprise button */
+      .surprise-button:hover {
+        background-color: #FFA500; /* Orange color on hover, you can change it */
+      }
+
+      /* Styles for the corner button with cat icon */
+      .corner-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4CAF50; /* Green color, you can change it */
+        color: #fff; /* White text */
+        padding: 10px 15px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+        animation: pulse 2s infinite; /* Add pulse animation */
+      }
+
+      /* Add pulse animation keyframes */
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1><a href="dicee.html">May Mắn 2024</a></h1>
+
+      <!-- Add a wrapper div for styling the "Start" button -->
+      <div class="start-button-wrapper">
+        <button id="startButton" onclick="rollDice()">Start</button>
+      </div>
+
+      <div class="dice">
+        <img class="img1" src="images/dice6.png">
+        <img class="img2" src="images/dice2.png">
+        <img class="img3" src="images/dice3.png">
+      </div>
+
+      <div class="result">
+        <div id="notification"></div>
+      </div>
+
+      <!-- Add the marquee for the running text with rainbow blink effect -->
+      <div class="animation-container">
+        <p class="marquee"><span class="rainbow">CHÚC MỪNG NĂM MỚI 2024</span></p>
+      </div>
+
+      <!-- Add the corner button with cat icon -->
+      <button class="corner-button" onclick="showCatSurprise()"><i class="fas fa-cat"></i></button>
+    </div>
+
+    <!-- Include your JavaScript file at the end of the body -->
+    <script type="text/javascript" src="index.js"></script>
+
+    <!-- Include JavaScript for the surprise effect -->
+    <script>
+      function showSurprise() {
+        alert('Điều bất ngờ đây!');
+      }
+
+      function showCatSurprise() {
+        alert('Meow! Bạn đã tìm thấy con mèo ẩn sau góc màn hình!');
+      }
+    </script>
+
+    <!-- Include Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chúc Mừng Năm Mới 2024</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+      /* Your existing styles here */
+
+      /* Styles for the corner button with cat icon */
+      .corner-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4CAF50; /* Green color, you can change it */
+        color: #fff; /* White text */
+        padding: 10px 15px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+        animation: pulse 2s infinite; /* Add pulse animation */
+      }
+
+      /* Add pulse animation keyframes */
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      /* Hidden message for cat click */
+      .hidden-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+      }
+
+      /* Styles for the close button in the message */
+      .close-button {
+        background-color: #ff0000; /* Red color for close button, you can change it */
+        color: #fff; /* White text */
+        padding: 10px 15px;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      /* Hover effect for the close button */
+      .close-button:hover {
+        background-color: #cc0000; /* Darker red on hover, you can change it */
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <!-- Your existing content here -->
+
+      <!-- Add the corner button with cat icon -->
+      <button class="corner-button" onclick="showCatMessage()"><i class="fas fa-cat"></i></button>
+
+      <!-- Hidden message for cat click -->
+      <div id="catMessage" class="hidden-message">
+        <p>Kính gửi Quý Khách Hàng,</p>
+        <p>Nhân dịp năm mới Giáp Thìn 2024, chúng tôi gửi tới Quý Khách Hàng những lời chúc tốt đẹp nhất...</p>
+        <p>Chân thành cảm ơn!</p>
+        <button class="close-button" onclick="closeCatMessage()">Đóng</button>
+      </div>
+    </div>
+
+    <!-- Include your JavaScript file at the end of the body -->
+    <script type="text/javascript" src="index.js"></script>
+
+    <!-- Include JavaScript for the cat message effect -->
+    <script>
+      function showCatMessage() {
+        // Display the hidden message
+        document.getElementById('catMessage').style.display = 'block';
+      }
+
+      function closeCatMessage() {
+        // Hide the message when the close button is clicked
+        document.getElementById('catMessage').style.display = 'none';
+      }
+    </script>
+
+    <!-- Include Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <div class="f1-effect">
+	
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+      <div class="f1-effect-flower">
+      </div>
+      
+    </div>
+    
+    <style>
+    .f1-effect {
+      position: relative;
+      z-index: 99999999; }
+      .f1-effect .f1-effect-flower {
+        opacity: 1;
+        border-radius: 100%;
+        background: url(https://lh3.googleusercontent.com/-xXs4wti-JDo/Vqk2sWmawnI/AAAAAAAA9TM/nkwuMRATKM4/s128-Ic42/hoaroi-VIETDESIGNER.NET.png);
+        position: fixed;
+        top: -10%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: default;
+        -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+        -webkit-animation-duration: 10s, 3s;
+        -webkit-animation-timing-function: linear, ease-in-out;
+        -webkit-animation-iteration-count: infinite, infinite;
+        -webkit-animation-play-state: running, running;
+        animation-name: snowflakes-fall, snowflakes-shake;
+        animation-duration: 10s, 3s;
+        animation-timing-function: linear, ease-in-out;
+        animation-iteration-count: infinite, infinite;
+        animation-play-state: running, running; }
+        @media (max-width: 767px) {
+          .f1-effect .f1-effect-flower:nth-of-type(2n) {
+            display: none; } }
+        .f1-effect .f1-effect-flower:nth-of-type(0) {
+          left: 5%;
+          -webkit-animation-delay: 1s, 1s;
+          animation-delay: 1s, 1s;
+          width: 16px;
+          height: 16px;
+          background-position: 0 -23px; }
+        .f1-effect .f1-effect-flower:nth-of-type(1) {
+          left: 10%;
+          -webkit-animation-delay: 6s, 0.5s;
+          animation-delay: 6s, 0.5s;
+          width: 13px;
+          height: 13px;
+          background-position: 0 -50px; }
+        .f1-effect .f1-effect-flower:nth-of-type(2) {
+          left: 20%;
+          -webkit-animation-delay: 4s, 2s;
+          animation-delay: 4s, 2s;
+          width: 15px;
+          height: 15px;
+          background-position: -49px -35px; }
+        .f1-effect .f1-effect-flower:nth-of-type(3) {
+          left: 30%;
+          -webkit-animation-delay: 2s, 2s;
+          animation-delay: 2s, 2s;
+          width: 14px;
+          height: 14px;
+          background-position: -31px 0; }
+        .f1-effect .f1-effect-flower:nth-of-type(4) {
+          left: 40%;
+          -webkit-animation-delay: 8s, 3s;
+          animation-delay: 8s, 3s;
+          width: 16px;
+          height: 16px;
+          background-position: 0 -23px; }
+        .f1-effect .f1-effect-flower:nth-of-type(5) {
+          left: 50%;
+          -webkit-animation-delay: 6s, 2s;
+          animation-delay: 6s, 2s;
+          width: 13px;
+          height: 13px;
+          background-position: 0 -50px; }
+        .f1-effect .f1-effect-flower:nth-of-type(6) {
+          left: 60%;
+          -webkit-animation-delay: 2.5s, 1s;
+          animation-delay: 2.5s, 1s;
+          width: 15px;
+          height: 15px;
+          background-position: -49px -35px; }
+        .f1-effect .f1-effect-flower:nth-of-type(7) {
+          left: 70%;
+          -webkit-animation-delay: 1s, 0s;
+          animation-delay: 1s, 0s;
+          width: 14px;
+          height: 14px;
+          background-position: -31px 0; }
+        .f1-effect .f1-effect-flower:nth-of-type(8) {
+          left: 80%;
+          -webkit-animation-delay: 2s, 2s;
+          animation-delay: 2s, 2s;
+          width: 14px;
+          height: 14px;
+          background-position: -31px 0; }
+        .f1-effect .f1-effect-flower:nth-of-type(9) {
+          left: 90%;
+          -webkit-animation-delay: 8s, 3s;
+          animation-delay: 8s, 3s;
+          width: 16px;
+          height: 16px;
+          background-position: 0 -23px; }
+        .f1-effect .f1-effect-flower:nth-of-type(10) {
+          left: 95%;
+          -webkit-animation-delay: 6s, 2s;
+          animation-delay: 6s, 2s;
+          width: 13px;
+          height: 13px;
+          background-position: 0 -50px; }
+    
+    @-webkit-keyframes snowflakes-fall {
+      0% {
+        top: -10%; }
+      100% {
+        top: 100%; } }
+    
+    @-webkit-keyframes snowflakes-shake {
+      0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px); }
+      50% {
+        -webkit-transform: translateX(80px);
+        transform: translateX(80px); }
+      100% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px); } }
+    
+    @keyframes snowflakes-fall {
+      0% {
+        top: -10%; }
+      100% {
+        top: 100%; } }
+    
+    @keyframes snowflakes-shake {
+      0% {
+        transform: translateX(0px); }
+      50% {
+        transform: translateX(80px); }
+      100% {
+        transform: translateX(0px); } }
+    
+    </style><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+    <div class="snowflakes" aria-hidden="true">
+      <div class="snowflake"> ❤️<h1 class="pink-text">HAPPY</h1></div>  
+      <div class="snowflake"> ❤️<h1 class="pink-text">NEW</h1></div>
+      <div class="snowflake"> ❤️<h1 class="pink-text">YEAR</h1></div>
+      <div class="snowflake"> ❤️<h1 class="pink-text">2024</h1></div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+      <div class="snowflake"> ❤️</div>
+    </div>
+    
+    <style>
+      @-webkit-keyframes snowflakes-fall {
+        0% {top:-10%}
+        100% {top:100%}
+      }
+      @-webkit-keyframes snowflakes-shake {
+        0%,100% {-webkit-transform:translateX(0);transform:translateX(0)}
+        50% {-webkit-transform:translateX(80px);transform:translateX(80px)}
+      }
+      @keyframes snowflakes-fall {
+        0% {top:-10%}
+        100% {top:100%}
+      }
+      @keyframes snowflakes-shake {
+        0%,100%{ transform:translateX(0)}
+        50% {transform:translateX(80px)}
+      }
+      .pink-text {
+        color: rgb(199, 192, 255);
+        font-size: 30px;
+      }
+      
+      .snowflake {
+        color: #fff;
+        font-size: 1em;
+        font-family: Arial, sans-serif;
+        text-shadow: 0 0 5px #000;
+        position:fixed;
+        top:-10%;
+        z-index:9999;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        cursor:default;
+        -webkit-animation-name:snowflakes-fall,snowflakes-shake;
+        -webkit-animation-duration:10s,3s;
+        -webkit-animation-timing-function:linear,ease-in-out;
+        -webkit-animation-iteration-count:infinite,infinite;
+        -webkit-animation-play-state:running,running;
+        animation-name:snowflakes-fall,snowflakes-shake;
+        animation-duration:10s,3s;
+        animation-timing-function:linear,ease-in-out;
+        animation-iteration-count:infinite,infinite;
+        animation-play-state:running,running;
+      }
+      .snowflake:nth-of-type(0){
+        left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s
+      }
+      .snowflake:nth-of-type(1){
+        left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s
+      }
+      .snowflake:nth-of-type(2){
+        left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s
+      }
+      .snowflake:nth-of-type(3){
+        left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s
+      }
+      .snowflake:nth-of-type(4){
+        left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s
+      }
+      .snowflake:nth-of-type(5){
+        left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s
+      }
+      .snowflake:nth-of-type(6){
+        left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s
+      }
+      .snowflake:nth-of-type(7){
+        left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s
+      }
+      .snowflake:nth-of-type(8){
+        left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s
+      }
+      .snowflake:nth-of-type(9){
+        left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s
+      }
+      .snowflake:nth-of-type(10){
+        left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s
+      }
+      .snowflake:nth-of-type(11){
+        left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s
+      }
+    </style>
+    
+  </body>
+</html>
